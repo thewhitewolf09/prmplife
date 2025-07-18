@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRMlife - Sapne Kare Sakar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-bg {
+            position: relative;
+            overflow: hidden;
+
+            /* Desktop-only height */
+            min-height: 100vh;
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                min-height: auto;
+                /* ← Let content control height on small screens */
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+        }
+
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            transform: scaleX(-1);
+            /* Mirror flip */
+            z-index: 0;
+        }
+
+        .hero-bg>* {
+            position: relative;
+            z-index: 1;
+        }
+
+
+
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .plan-card:hover {
+            transform: scale(1.03);
+        }
+
+        .journey-line {
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, #f97316, #78350f);
+        }
+
+        .journey-dot {
+            width: 24px;
+            height: 24px;
+            border: 4px solid #f97316;
+        }
+
+        .tab-active {
+            border-bottom: 3px solid #f97316;
+            color: #f97316;
+            font-weight: 600;
+        }
+
+        @keyframes pulseSlow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.7);
+            }
+
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 20px 10px rgba(234, 88, 12, 0.3);
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulseSlow 3s infinite;
+        }
+
+        .start-from-top {
+            transform: rotate(-90deg);
+            transform-origin: center;
+        }
+    </style>
+</head>
+
+<body class="bg-orange-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white text-orange-900 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-1 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-end space-x-2">
+                <img src="/image/logo.png" alt="PRMlife Logo" class="h-12 w-12 object-contain" />
+                <span class="text-3xl font-bold self-end">PRMlife</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-end space-x-6 font-semibold">
+                <a href="#products" class="hover:text-orange-600 transition">Products</a>
+                <a href="#plans" class="hover:text-orange-600 transition">Plans</a>
+                <a href="#earnings" class="hover:text-orange-600 transition">Earnings</a>
+                <a href="#testimonials" class="hover:text-orange-600 transition">Testimonials</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-orange-900">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white text-orange-900 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4 font-semibold">
+            <a href="#products" class="hover:text-orange-600 transition">Products</a>
+            <a href="#plans" class="hover:text-orange-600 transition">Plans</a>
+            <a href="#earnings" class="hover:text-orange-600 transition">Earnings</a>
+            <a href="#testimonials" class="hover:text-orange-600 transition">Testimonials</a>
+        </div>
+    </div>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero-bg bg-orange-800 text-white">
+        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between">
+
+            <!-- Left: Content -->
+            <div class="w-full md:w-1/2 md:pr-12 text-left">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">PRMlife</h1>
+                <p class="text-xl md:text-3xl mb-6 font-medium">सपने करे साकार</p>
+                <p class="text-lg md:text-xl mb-6 bg-orange-700 bg-opacity-70 p-4 rounded-lg inline-block">
+                    Start your business with just ₹1499. Get 100+ daily-use products, and earn from Day 1.<br><br>
+                    <span class="text-orange-200">💸 No Experience Needed </br> 📦 Real Products </br> 👥
+                        Community-Driven</span>
+                </p>
+
+
+                <!-- CTA + Progress Circle -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="https://forms.gle/zEm436xNCq2AryGD8" target="_blank" rel="noopener noreferrer">
+                        <button
+                            class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full text-lg transition transform hover:scale-105">
+                            Join Now – Become a Leader
+                        </button>
+                    </a>
+
+
+                    <div class="flex items-center bg-orange-900 bg-opacity-70 p-3 rounded-full">
+                        <div class="relative w-12 h-12 mr-3">
+                            <svg class="w-full h-full" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" class="stroke-orange-200" stroke-width="2"
+                                    stroke-dasharray="100, 100" stroke-dashoffset="13"></circle>
+                                <circle cx="18" cy="18" r="16" fill="none"
+                                    class="stroke-orange-500 progress-ring__circle" stroke-width="2"
+                                    stroke-dasharray="100, 100" stroke-dashoffset="13"></circle>
+                            </svg>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white">25%</span>
+                        </div>
+                        <span class="text-sm md:text-base">25/100 Leaders Joined</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Motivation Message Section -->
+    <section class="relative py-20 bg-orange-50 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="backdrop-blur-lg bg-white/80 border border-orange-200 shadow-2xl rounded-3xl p-8 md:p-14 text-center max-w-5xl mx-auto transform transition duration-700 opacity-0 translate-y-10"
+                id="motivationBox">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-orange-800 mb-6 leading-snug tracking-tight">
+                    "You don’t need to be rich to start. <br>But you need to start to get rich."
+                </h2>
+                <p class="text-lg md:text-xl text-orange-700 mb-6 leading-relaxed max-w-3xl mx-auto">
+                    Turn your home into your headquarters.<br>
+                    Earn while you grow — share real products, build real teams, make real income.<br>
+                    The best part? You’re just getting started.
+                </p>
+                <div class="mt-6">
+                    <span
+                        class="inline-block bg-orange-200 text-orange-900 text-sm md:text-base font-semibold px-6 py-3 rounded-full shadow-md tracking-wide">
+                        💪 Empower Yourself • 🚀 Inspire Others • 💼 Own Your Future
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animation on scroll
+        window.addEventListener('scroll', () => {
+            const box = document.getElementById('motivationBox');
+            const boxTop = box.getBoundingClientRect().top;
+            const triggerPoint = window.innerHeight * 0.8;
+
+            if (boxTop < triggerPoint) {
+                box.classList.add('opacity-100', 'translate-y-0');
+                box.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    </script>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-orange-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-orange-900">100+ Products</h2>
+
+            <div class="flex justify-center mb-8">
+                <div
+                    class="inline-flex flex-wrap md:flex-nowrap justify-center gap-2 md:gap-0 overflow-x-auto rounded-md shadow-sm">
+                    <button onclick="filterProducts('all')" data-category="all"
+                        class="tab-btn px-4 py-2 text-sm font-medium border border-orange-300 bg-orange-600 text-white rounded-md md:rounded-l-lg">
+                        All Products
+                    </button>
+                    <button onclick="filterProducts('fashion')" data-category="fashion"
+                        class="tab-btn px-4 py-2 text-sm font-medium border border-orange-300 bg-white text-orange-800 hover:bg-orange-50">
+                        Clothing
+                    </button>
+                    <button onclick="filterProducts('home')" data-category="home"
+                        class="tab-btn px-4 py-2 text-sm font-medium border border-orange-300 bg-white text-orange-800 hover:bg-orange-50">
+                        Home Essentials
+                    </button>
+                    <button onclick="filterProducts('food')" data-category="food"
+                        class="tab-btn px-4 py-2 text-sm font-medium border border-orange-300 bg-white text-orange-800 hover:bg-orange-50">
+                        Groceries & Snacks
+                    </button>
+                    <button onclick="filterProducts('health')" data-category="health"
+                        class="tab-btn px-4 py-2 text-sm font-medium border border-orange-300 bg-white text-orange-800 hover:bg-orange-50">
+                        Health & Beauty
+                    </button>
+                    <button onclick="filterProducts('farming')" data-category="farming"
+                        class="tab-btn px-4 py-2 text-sm font-medium border border-orange-300 bg-white text-orange-800 hover:bg-orange-50 md:rounded-r-lg">
+                        Farming & Tools
+                    </button>
+                </div>
+            </div>
+
+
+            <p class="text-center text-orange-800 mb-8 italic">
+                Everything you need. Everyday essentials. Start your business from home today.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Product items will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan Selector Section -->
+    <section id="plans" class="py-16 bg-orange-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-orange-900">Choose Your Plan</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Starter -->
+                <div id="starterContainer">
+                    <div class="plan-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300">
+                        <div class="bg-orange-500 text-white p-6">
+                            <h3 class="text-2xl font-bold">Starter</h3>
+                            <p class="text-orange-100">Perfect for beginners</p>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-3xl font-bold mb-4 text-orange-800">₹1499</div>
+                            <ul class="space-y-3 mb-6">
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i>Products worth ₹2000</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i>₹200 per referral</li>
+                                <li><i class="fas fa-times text-gray-400 mr-2"></i><span class="text-gray-500">No Dream
+                                        Fund Access</span></li>
+                            </ul>
+                            <button onclick="showPlanDetails('starter')"
+                                class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">
+                                View More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pro -->
+                <div id="proContainer">
+                    <div class="plan-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300">
+                        <div class="bg-orange-600 text-white p-6 relative">
+                            <h3 class="text-2xl font-bold">Pro</h3>
+                            <p class="text-orange-200">For serious earners</p>
+                            <div class="absolute top-0 right-0 bg-orange-800 text-xs font-bold px-3 py-1 rounded-bl-lg">
+                                POPULAR</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-3xl font-bold mb-4 text-orange-800">₹5000</div>
+                            <ul class="space-y-3 mb-6">
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i>Products worth ₹7000</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i>₹750 per referral</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i>Dream Fund Access (Bike + Car)</li>
+                            </ul>
+                            <button onclick="showPlanDetails('pro')"
+                                class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+                                View More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leader -->
+                <div id="leaderContainer">
+                    <div class="plan-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300">
+                        <div class="bg-orange-700 text-white p-6">
+                            <h3 class="text-2xl font-bold">Leader</h3>
+                            <p class="text-orange-200">Maximum benefits</p>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-3xl font-bold mb-4 text-orange-800">₹10,000</div>
+                            <ul class="space-y-3 mb-6">
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i>Products + Leadership Badge</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i>₹750 per referral</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i>All Funds + Royalty Income</li>
+                            </ul>
+                            <button onclick="showPlanDetails('leader')"
+                                class="w-full bg-orange-700 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded">
+                                View More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Hidden Detail Box (Moves around) -->
+            <div id="planDetails" class="mt-4 p-6 bg-white border rounded-lg shadow hidden transition-all duration-300">
+                <div id="planContent" class="text-orange-900 text-lg font-medium"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Earning Opportunities Section -->
+    <section id="earnings" class="py-16 bg-orange-200">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-orange-900">12 Type of Earnings</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Earning Opportunity 1 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Direct Income</h3>
+                    <p class="text-gray-600 text-sm">₹200–₹750 per join</p>
+                </div>
+
+                <!-- Earning Opportunity 2 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Level Income</h3>
+                    <p class="text-gray-600 text-sm">Income from 15 levels of your team</p>
+                </div>
+
+                <!-- Earning Opportunity 3 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Spin Wheel</h3>
+                    <p class="text-gray-600 text-sm">Earn daily with luck & effort</p>
+                </div>
+
+                <!-- Earning Opportunity 4 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Royalty Income</h3>
+                    <p class="text-gray-600 text-sm">Extra income for achievers</p>
+                </div>
+
+                <!-- Earning Opportunity 5 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Team Growth Income</h3>
+                    <p class="text-gray-600 text-sm">Monthly income from team expansion</p>
+                </div>
+
+                <!-- Earning Opportunity 6 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">House Fund</h3>
+                    <p class="text-gray-600 text-sm">Dream home fund for leaders</p>
+                </div>
+
+                <!-- Earning Opportunity 7 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Bike Fund</h3>
+                    <p class="text-gray-600 text-sm">Complete level → get a bike</p>
+                </div>
+
+                <!-- Earning Opportunity 8 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Car Fund</h3>
+                    <p class="text-gray-600 text-sm">Hit Pro/Leader → get car fund</p>
+                </div>
+
+                <!-- Earning Opportunity 9 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Dubai Trip Fund</h3>
+                    <p class="text-gray-600 text-sm">International tour on achievement</p>
+                </div>
+
+                <!-- Earning Opportunity 10 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Goa Villa Fund</h3>
+                    <p class="text-gray-600 text-sm">Desi dream vacation reward</p>
+                </div>
+
+                <!-- Earning Opportunity 11 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Health Fund</h3>
+                    <p class="text-gray-600 text-sm">Earn while staying protected</p>
+                </div>
+
+                <!-- Earning Opportunity 12 -->
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition">
+                    <div class="text-orange-600 text-3xl mb-3">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Repurchase Income</h3>
+                    <p class="text-gray-600 text-sm">Passive income from product reorders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Big Rewards Visual Section -->
+    <section class="mt-20 bg-orange-50 py-12 px-4">
+        <h3 class="text-3xl md:text-4xl font-extrabold text-orange-800 text-center mb-12">
+            Dream Rewards. Achieve & Live It.
+        </h3>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <!-- Card -->
+            <div
+                class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="/image/bike.webp" alt="Bike"
+                    class="w-full h-60 object-cover group-hover:scale-105 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition duration-300 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h4 class="text-xl font-bold mb-2">🏍️ Your First Bike</h4>
+                        <p class="text-sm opacity-90">Hit your first milestone and cruise into freedom.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div
+                class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="/image/car.webp" alt="Car"
+                    class="w-full h-60 object-cover group-hover:scale-105 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition duration-300 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h4 class="text-xl font-bold mb-2">🚗 Drive the Dream</h4>
+                        <p class="text-sm opacity-90">Your journey deserves a four-wheeled companion.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div
+                class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="/image/house.webp" alt="House"
+                    class="w-full h-60 object-cover group-hover:scale-105 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition duration-300 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h4 class="text-xl font-bold mb-2">🏡 Build Your Home</h4>
+                        <p class="text-sm opacity-90">Turn your success into a space called “mine”.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div
+                class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="/image/dubai.webp" alt="Dubai Trip"
+                    class="w-full h-60 object-cover group-hover:scale-105 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition duration-300 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h4 class="text-xl font-bold mb-2">✈️ Fly to Dubai</h4>
+                        <p class="text-sm opacity-90">Luxury, lights, leadership. You've earned it.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div
+                class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="/image/goa.webp" alt="Goa Villa"
+                    class="w-full h-60 object-cover group-hover:scale-105 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition duration-300 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h4 class="text-xl font-bold mb-2">🏖️ Goa Escape</h4>
+                        <p class="text-sm opacity-90">Beach, vibes, villa. Celebrate your wins.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div
+                class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="/image/healthandeducation.webp" alt="Health & Education"
+                    class="w-full h-60 object-cover group-hover:scale-105 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition duration-300 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h4 class="text-xl font-bold mb-2">💉 Health & 📚 Education</h4>
+                        <p class="text-sm opacity-90">Secure your family's tomorrow while winning today.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-orange-800 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Real Members, Real Success</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-orange-700 rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                            alt="Rahul Kumar" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Rahul Kumar</h4>
+                            <p class="text-orange-200 text-sm">Farmer, Bihar</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"Pehle mazdoori karta tha, ab apna kaam hai. ₹1499 ne meri zindagi badli."
+                    </p>
+                    <div class="flex text-orange-300">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-orange-700 rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                            alt="Priya Sharma" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Priya Sharma</h4>
+                            <p class="text-orange-200 text-sm">Homemaker, Uttar Pradesh</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"Ghar baithe paisa kamana PRMlife ne sikhaya. Ab main apne bachchon ko acchi
+                        padhai karwa sakti hoon."</p>
+                    <div class="flex text-orange-300">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-orange-700 rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                            alt="Vikram Singh" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Vikram Singh</h4>
+                            <p class="text-orange-200 text-sm">Small Business Owner, Rajasthan</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"6 mahine mein hi meri bike mil gayi. Ab car ke liye kaam kar raha hoon. PRM
+                        Life ne mera confidence badhaya."</p>
+                    <div class="flex text-orange-300">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <button
+                    class="bg-white text-orange-800 font-bold py-3 px-8 rounded-full hover:bg-orange-100 transition">
+                    View More Success Stories
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-orange-900">Why PRMlife is Different?</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="bg-red-50 p-8 rounded-lg border-l-4 border-red-500">
+                    <h3 class="text-2xl font-bold text-red-700 mb-4">Fake Schemes ❌</h3>
+                    <ul class="space-y-3 text-red-800">
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
+                            <span>Only joining fees, no real products</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
+                            <span>No transparency in income</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
+                            <span>No legal registration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
+                            <span>Disappears after collecting money</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-green-50 p-8 rounded-lg border-l-4 border-green-500">
+                    <h3 class="text-2xl font-bold text-green-700 mb-4">PRMlife ✅</h3>
+                    <ul class="space-y-3 text-green-800">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Real products delivered to your home</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Transparent income structure</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Legal business (Registration in progress under Companies Act, 2013)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>GST + proper refund/return policy (coming soon)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How To Start Section -->
+    <section class="py-16 bg-orange-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-orange-900">How To Start</h2>
+
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div
+                        class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                        1</div>
+                    <h3 class="text-xl font-bold text-orange-800 mb-3">🛍️ Buy Plan</h3>
+                    <p class="text-gray-600">Choose from Starter (₹1499), Pro (₹5000), or Leader (₹10,000) plan</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div
+                        class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                        2</div>
+                    <h3 class="text-xl font-bold text-orange-800 mb-3">📝 Fill Form</h3>
+                    <p class="text-gray-600">Complete simple registration with basic details</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div
+                        class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                        3</div>
+                    <h3 class="text-xl font-bold text-orange-800 mb-3">💸 Start Earning</h3>
+                    <p class="text-gray-600">Receive products and begin earning from Day 1</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Circle Section -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-extrabold text-orange-900 mb-6">
+                The Leadership Circle
+            </h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-orange-700 mb-12">
+                Only <strong>100</strong> rural pioneers will join this elite circle. <br />
+                Claim your spot, lead your community, and earn with pride. <br />
+                <strong>Not just business — a ₹10,000 movement.</strong>
+            </p>
+
+
+            <!-- Circle Visual -->
+            <div class="relative w-72 h-72 mx-auto rounded-full bg-orange-200 shadow-2xl animate-pulse-slow">
+                <!-- Progress Ring -->
+                <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#fcd34d" stroke-width="6" fill="none" />
+                    <circle id="leaderProgressCircle" cx="50" cy="50" r="45" stroke="#ea580c" stroke-width="6"
+                        fill="none" stroke-dasharray="282.6" stroke-dashoffset="282.6" stroke-linecap="round"
+                        class="start-from-top" />
+                </svg>
+
+                <!-- Inner Button -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <a href="https://forms.gle/zEm436xNCq2AryGD8" target="_blank" rel="noopener noreferrer">
+                        <button
+                            class="bg-orange-600 hover:bg-orange-700 text-white font-bold px-6 py-3 rounded-full text-lg shadow-lg transition transform hover:scale-105">
+                            Join Now
+                        </button>
+                    </a>
+
+                    <span id="leaderCountText" class="mt-2 text-sm text-orange-900 font-semibold animate-bounce">
+                        0/100 Joined
+                    </span>
+                </div>
+
+                <!-- Number Ticks -->
+                <div class="absolute w-full h-full top-0 left-0 pointer-events-none">
+                    <div
+                        class="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-full text-xs font-bold text-orange-900">
+                        0</div>
+                    <div
+                        class="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2 text-xs font-bold text-orange-900">
+                        25</div>
+                    <div
+                        class="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-full text-xs font-bold text-orange-900">
+                        50</div>
+                    <div
+                        class="absolute left-0 top-1/2 transform -translate-x-full -translate-y-1/2 text-xs font-bold text-orange-900">
+                        75</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Promo Video Section -->
+    <section class="py-16 bg-orange-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">A small start, a big dream</h2>
+
+            <div class="max-w-4xl mx-auto bg-orange-800 rounded-lg overflow-hidden shadow-xl">
+                <div class="aspect-w-16 aspect-h-9 bg-black">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Promo Video" class="w-full h-full object-cover opacity-70">
+                    <!-- <div class="absolute inset-0 flex items-center justify-center">
+                        <button
+                            class="w-16 h-16 md:w-20 md:h-20 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-500 transition transform hover:scale-110">
+                            <i class="fas fa-play text-2xl"></i>
+                        </button>
+                    </div> -->
+                </div>
+                <div class="p-6 text-center">
+                    <p class="text-lg mb-4">"PRMlife ke saath apne gaon se duniya tak…"</p>
+                    <button
+                        class="bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 px-8 rounded-full transition">
+                        Watch Full Story
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-orange-950 text-orange-200 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">PRMlife</h3>
+                    <p class="mb-4">Sapne Kare Sakar</p>
+                    <p class="text-sm">Powered by an upcoming registered company, launching soon.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#products" class="hover:text-orange-400 transition">Products</a></li>
+                        <li><a href="#plans" class="hover:text-orange-400 transition">Plans</a></li>
+                        <li><a href="#earnings" class="hover:text-orange-400 transition">Earnings</a></li>
+                        <li><a href="#journey" class="hover:text-orange-400 transition">Journey</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-orange-400 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition">Refund Policy</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition">Terms of Use</a></li>
+                        <li class="text-sm mt-4">Currently under incorporation with Govt. of India under Companies Act,
+                            2013.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Contact</h3>
+                    <button
+                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mb-4 transition flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp Support
+                    </button>
+                    <div class="flex space-x-4 text-xl mb-4">
+                        <a href="#" class="hover:text-orange-400 transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="hover:text-orange-400 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-orange-400 transition"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="hover:text-orange-400 transition"><i class="fab fa-telegram"></i></a>
+                    </div>
+                    <p class="text-sm">Registered Office: Coming Soon</p>
+                </div>
+            </div>
+
+            <div class="border-t border-orange-800 mt-8 pt-8 text-center text-sm">
+                <p>© 2025 PRMlife. All rights reserved.</p>
+                <p class="mt-2">Disclaimer: PRMlife is powered by an upcoming registered company, launching soon.
+                    Currently under incorporation with Govt. of India under Companies Act, 2013.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample product data
+        const products = [
+
+            // fashion
+            { id: 16, name: "Men's Formal Shirt", category: "fashion", image: "/image/shirt.webp" },
+            { id: 17, name: "Casual Denim Jeans (Men)", category: "fashion", image: "/image/jeans.webp" },
+            { id: 23, name: "Men's Pants", category: "fashion", image: "/image/pant.webp" },
+            { id: 19, name: "Women’s Cotton Saree", category: "fashion", image: "/image/sari.webp" },
+            { id: 20, name: "Sports Shoes (Unisex)", category: "fashion", image: "/image/sportshoes.webp" },
+            { id: 21, name: "Ladies Sandals", category: "fashion", image: "/image/sandal.webp" },
+            { id: 22, name: "Men's Shoes", category: "fashion", image: "/image/shoes.webp" },
+            { id: 18, name: "Kid's Traditional Dress", category: "fashion", image: "/image/kids.webp" },
+
+            // Ghar ke liye (home)     important Note: category: "home"
+
+            // Khaane-Peene ka samaan (food) important Note: category: "food"
+
+            // Swasthya aur Saundarya (health & beauty) important Note: category: "health"
+
+            // Kheti-Baadi (farming) important Note: category: "farming"
+        ];
+
+
+        let currentCategory = 'all';
+        let showAll = false;
+
+        function renderProducts(category = 'all') {
+            const productsContainer = document.querySelector('#products .grid');
+            const viewMoreBtn = document.getElementById('view-more-btn');
+
+            const filteredProducts = category === 'all'
+                ? products
+                : products.filter(p => p.category === category);
+
+            // Slice or full list based on toggle
+            const productsToShow = showAll ? filteredProducts : filteredProducts.slice(0, 8);
+            productsContainer.innerHTML = '';
+
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300';
+                productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="w-full h-65 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-1 text-orange-800">${product.name}</h3>
+                    <span class="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded">Included in ₹1499 Plan</span>
+                </div>
+            `;
+                productsContainer.appendChild(productCard);
+            });
+
+            // Show/hide the View More button
+            if (filteredProducts.length > 8) {
+                viewMoreBtn.classList.remove('hidden');
+                viewMoreBtn.textContent = showAll ? 'View Less' : 'View More';
+            } else {
+                viewMoreBtn.classList.add('hidden');
+            }
+
+            currentCategory = category;
+        }
+
+        function filterProducts(category) {
+            showAll = false;
+            renderProducts(category);
+
+            // Update tab active states based on data-category
+            document.querySelectorAll('.tab-btn').forEach(tab => {
+                const isActive = tab.getAttribute('data-category') === category;
+                tab.classList.toggle('bg-orange-600', isActive);
+                tab.classList.toggle('text-white', isActive);
+                tab.classList.toggle('bg-white', !isActive);
+                tab.classList.toggle('text-orange-800', !isActive);
+            });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Insert the View More button
+            const viewMoreBtn = document.createElement('button');
+            viewMoreBtn.id = 'view-more-btn';
+            viewMoreBtn.className = 'block mx-auto mt-8 px-6 py-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 transition hidden';
+            viewMoreBtn.textContent = 'View More';
+            viewMoreBtn.addEventListener('click', () => {
+                showAll = !showAll;
+                renderProducts(currentCategory);
+            });
+            document.querySelector('#products .container').appendChild(viewMoreBtn);
+
+            // Initial render
+            renderProducts();
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // Mobile menu toggle (if needed)
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+
+                document.querySelectorAll('#mobile-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+
+    </script>
+
+    <script>
+        let currentPlan = null;
+
+        const planContent = {
+            starter: `
+      <div class="flex flex-col md:flex-row gap-8 items-start">
+        <div class="w-full md:w-1/3 text-center md:text-left">
+          <h3 class="text-2xl font-bold text-orange-800 mb-3">Starter Plan</h3>
+          <img src="/image/pair.png" alt="Network Mapping" class="w-64 mx-auto md:mx-0">
+          <p class="text-sm text-gray-600 italic mt-2">2:1 or 1:2 structure triggers Mapping Income</p>
+        </div>
+        <div class="w-full md:w-2/3">
+          <h5 class="text-xl font-semibold text-orange-700 mb-2">How Income Works</h5>
+          <p class="mb-4 text-orange-900 leading-relaxed">
+            💰 <strong>Direct Income:</strong> You earn <strong>₹200</strong> for every person you directly refer.<br>
+            🔄 <strong>Mapping Income:</strong> After placing 2 people in your left and right leg, when the 3rd person joins (either <strong>2:1</strong> or <strong>1:2</strong>), you get another <strong>₹200</strong> as pairing reward.<br>
+            🌀 <strong>Next Pair:</strong> After your first pair, all further pairings follow <strong>1:1 unlimited depth</strong>.
+          </p>
+        </div>
+      </div>
+    `,
+            pro: `
+      <div class="flex flex-col md:flex-row gap-8 items-start">
+        <div class="w-full md:w-1/3 text-center md:text-left">
+          <h3 class="text-2xl font-bold text-orange-800 mb-3">Pro Plan</h3>
+          <img src="/image/pair.png" alt="Network Mapping" class="w-64 mx-auto md:mx-0">
+          <p class="text-sm text-gray-600 italic mt-2">Grow your team, earn more per pair</p>
+        </div>
+        <div class="w-full md:w-2/3">
+          <h5 class="text-xl font-semibold text-orange-700 mb-2">How Income Works</h5>
+          <p class="mb-4 text-orange-900 leading-relaxed">
+            💰 <strong>Direct Income:</strong> You earn <strong>₹750</strong> for every person you directly refer.<br>
+            🔄 <strong>Mapping Income:</strong> After placing 2 people in your left and right leg, when the 3rd person joins (either <strong>2:1</strong> or <strong>1:2</strong>), you get another <strong>₹500</strong> as pairing reward.<br>
+            🌀 <strong>Next Pair:</strong> After first pairing, all future rewards follow <strong>1:1 pairing logic</strong> with <strong>unlimited depth</strong>.
+          </p>
+        </div>
+      </div>
+    `,
+            leader: `
+      <div class="flex flex-col md:flex-row gap-8 items-start">
+        <div class="w-full md:w-1/3 text-center md:text-left">
+          <h3 class="text-2xl font-bold text-orange-800 mb-3">Leader Plan</h3>
+          <img src="/image/pair.png" alt="Network Mapping" class="w-64 mx-auto md:mx-0">
+          <p class="text-sm text-gray-600 italic mt-2">Royalty + Direct + Pairing = Full earning potential</p>
+        </div>
+        <div class="w-full md:w-2/3">
+          <h5 class="text-xl font-semibold text-orange-700 mb-2">How Income Works</h5>
+          <p class="mb-4 text-orange-900 leading-relaxed">
+            💰 <strong>Direct Income:</strong> You earn <strong>₹750</strong> per referral.<br>
+            🔄 <strong>Mapping Income:</strong> Earn <strong>₹500</strong> for every 2:1 or 1:2 leg combination.<br>
+            🌀 <strong>Next Pair:</strong> After initial pair, you earn on <strong>1:1 unlimited</strong> downline depth.<br>
+            👑 <strong>Royalty:</strong> 5% of total company turnover shared monthly among Leader Plan members.
+          </p>
+        </div>
+      </div>
+    `
+        };
+
+        function showPlanDetails(plan) {
+            const box = document.getElementById('planDetails');
+            const content = document.getElementById('planContent');
+
+            const isMobile = window.innerWidth < 768;
+            const container = document.getElementById(`${plan}Container`);
+            const gridWrapper = document.querySelector('#plans .grid');
+            const containerWrapper = gridWrapper.parentNode;
+
+            // Toggle logic
+            if (currentPlan === plan) {
+                box.classList.add('hidden');
+                currentPlan = null;
+                return;
+            }
+
+            // Set new content
+            content.innerHTML = planContent[plan];
+            box.classList.remove('hidden');
+
+            // Remove box from wherever it is
+            if (box.parentElement) {
+                box.parentElement.removeChild(box);
+            }
+
+            if (isMobile) {
+                // 👇 For small screen — put inside the selected card
+                container.appendChild(box);
+            } else {
+                // 👇 For desktop — put after all cards inside the same container
+                containerWrapper.insertBefore(box, gridWrapper.nextSibling);
+            }
+
+            currentPlan = plan;
+        }
+
+
+        // Optional: Reset on resize to avoid broken state
+        window.addEventListener('resize', () => {
+            if (currentPlan !== null) {
+                showPlanDetails(currentPlan);
+            }
+        });
+    </script>
+
+    <script>
+        const joinedLeaders = 25;
+        const totalLeaders = 100;
+
+        const circle = document.getElementById("leaderProgressCircle");
+        const countText = document.getElementById("leaderCountText");
+
+        const dashArray = 282.6;
+        const targetOffset = dashArray - (joinedLeaders / totalLeaders) * dashArray;
+
+        let currentOffset = dashArray;
+        const step = (dashArray - targetOffset) / 60; // 60 frames for ~1 sec
+        let count = 0;
+
+        function animateCircle() {
+            if (currentOffset <= targetOffset) {
+                circle.setAttribute("stroke-dashoffset", targetOffset);
+                return;
+            }
+            currentOffset -= step;
+            circle.setAttribute("stroke-dashoffset", currentOffset.toFixed(2));
+            requestAnimationFrame(animateCircle);
+        }
+
+        function animateCounter() {
+            if (count >= joinedLeaders) return;
+            count++;
+            countText.textContent = `${count}/100 Joined`;
+            setTimeout(animateCounter, 15);
+        }
+
+        window.addEventListener("load", () => {
+            animateCircle();
+            animateCounter();
+        });
+    </script>
+
+
+
+</body>
+
+</html>
